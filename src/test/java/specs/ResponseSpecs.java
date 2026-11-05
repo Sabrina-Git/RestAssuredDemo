@@ -1,0 +1,18 @@
+package specs;
+
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.specification.ResponseSpecification;
+
+import static org.hamcrest.Matchers.lessThan;
+
+public class ResponseSpecs {
+
+    public static ResponseSpecification successResponse() {
+        return new ResponseSpecBuilder()
+                .expectStatusCode(200)
+                .expectContentType(ContentType.JSON)
+                .expectResponseTime(lessThan(1000L))
+                .build();
+    }
+}
